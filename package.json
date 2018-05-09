@@ -1,0 +1,23 @@
+{
+  "name": "smarthipotecario",
+  "version": "1.0.0",
+  "description": "sweetalert",
+  "main": "index.js",
+  "dependencies": {
+    "sweetalert2": "^7.19.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristopherAedoP/smarthipotecariofrontend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChristopherAedoP/smarthipotecariofrontend/issues"
+  },
+  "homepage": "https://github.com/ChristopherAedoP/smarthipotecariofrontend#readme"
+}
