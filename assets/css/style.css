@@ -214,7 +214,7 @@ footer {
 
 /* DASHBOARD ICONS */
 
-.bk-clr-one {
+/*.bk-clr-one {
     background-color: #B9B739;
 }
 
@@ -233,6 +233,18 @@ footer {
 .bk-clr-five {
     background-color: rgb(90, 90, 90);
 }
+
+.bk-clr-six {
+    background-color: rgb(90, 90, 90);
+}
+
+.bk-clr-seven {
+    background-color: rgb(90, 90, 90);
+}
+
+.bk-clr-eight {
+    background-color: rgb(90, 90, 90);
+}*/
 
 .dashboard-div-icon {
     height: 75px;

@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html ng-app="smartApp" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -15,14 +15,55 @@
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <!-- CUSTOM STYLE  -->
     <link href="assets/css/style.css" rel="stylesheet" />
+
+    <!-- Angular Material style sheet -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+    <!-- Include jQuery library -->
+<script src="assets/js/jQuery/jquery.min.js"></script>
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+ <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.3/angular-route.js"></script>
+ <script src="//code.angularjs.org/1.5.9/angular-cookies.min.js"></script>
+<!-- Include Bootstrap Javascript -->
+<script src="js/bootstrap.min.js"></script>
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+
      <!-- HTML5 Shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script>
+            function cambia(){
+                document.getElementById("bk-clr-one").style.backgroundColor = "orange"; 
+                document.getElementById("bk-clr-two").style.backgroundColor = "gray";    
+            };
+
+            function cambia1(){
+                document.getElementById("bk-clr-one").style.backgroundColor = "orange"; 
+                document.getElementById("bk-clr-two").style.backgroundColor = "green";    
+            };
+            function cambia2(){
+                document.getElementById("bk-clr-one").style.backgroundColor = "green"; 
+                document.getElementById("bk-clr-two").style.backgroundColor = "green";    
+                document.getElementById("bk-clr-three").style.backgroundColor = "green";  
+            };
+
+            </script>
+
+
 </head>
-<body>
+<body ng-controller="DbController">
     <header>
         <div class="container">
             <div class="row">
@@ -93,11 +134,11 @@
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a class="menu-top-active" href="index.html">Estado Hipotecario</a></li>
-                            <li><a href="ui.html">UI Elements</a></li>
+                          <!--  <li><a href="ui.html">UI Elements</a></li>
                             <li><a href="table.html">Data Tables</a></li>
                             <li><a href="forms.html">Forms</a></li>
                              <li><a href="login.html">Login Page</a></li>
-                            <li><a href="blank.html">Blank Page</a></li>
+                            <li><a href="blank.html">Blank Page</a></li>-->
 
                         </ul>
                     </div>
@@ -123,7 +164,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-success">
-                        Estas en el proceso simulación de tu hipotecario se encuentra en revisión, el ejecutivo asignado para guiarte en este proceso es Ejecutivo@BancoEstado.cl
+                        Estas en el proceso simulación de tu hipotecario, se encuentra en revisión de antecedentes.
                     </div>
                 </div>
 
@@ -133,10 +174,10 @@
 <div class="row">
       <!--Bloque de Solicitud y Aprobación-->
         <div class="col-md-3 col-sm-3 col-xs-6">
-            <div class="dashboard-div-wrapper bk-clr-one">
+            <div class="dashboard-div-wrapper bk-clr-one" id="bk-clr-one">
                         <i  class="fa fa-venus dashboard-div-icon" ></i>
                 <div class="progress progress-striped active">
-                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
                         </div>
                            
                 </div>
@@ -144,12 +185,12 @@
             </div>
         </div>
 
-          <!--Bloque de Aprobación-->
+          <!--Bloque de antecedentes y tasación-->
           <div class="col-md-3 col-sm-3 col-xs-6">
-                <div class="dashboard-div-wrapper bk-clr-two">
+                <div class="dashboard-div-wrapper bk-clr-two" id="bk-clr-two">
                             <i  class="fa fa-venus dashboard-div-icon" ></i>
                     <div class="progress progress-striped active">
-                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
                             </div>
                                
                     </div>
@@ -157,65 +198,112 @@
                 </div>
             </div>
 
-            <!--Bloque de Aprobación-->
+            <!--Bloque de Estudio de Títulos -->
                  <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="dashboard-div-wrapper bk-clr-three">
+                    <div class="dashboard-div-wrapper bk-clr-three" id="bk-clr-three">
                         <i  class="fa fa-edit dashboard-div-icon" ></i>
                         <div class="progress progress-striped active">
-  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-  </div>
-                           
-</div>
-                         <h5>Estudio de Títulos </h5>
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        </div>
+                                                
+                        </div>
+                        <h5>Estudio de Títulos </h5>
                     </div>
                 </div>
+
+                 <!--Bloque de Escritura -->
                  <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="dashboard-div-wrapper bk-clr-four">
+                    <div class="dashboard-div-wrapper bk-clr-four" id="bk-clr-four">
                         <i  class="fa fa-cogs dashboard-div-icon" ></i>
                         <div class="progress progress-striped active">
-  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-  </div>
-                           
-</div>
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        </div>
+                                                
+                        </div>
                          <h5>Confección de la Escritura</h5>
                     </div>
                 </div>
 
-
+                <!--Bloque de Firma de Escritura -->
                <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="dashboard-div-wrapper bk-clr-five">
+                    <div class="dashboard-div-wrapper bk-clr-five" id="bk-clr-five">
                         <i  class="fa fa-bell-o dashboard-div-icon" ></i>
                         <div class="progress progress-striped active">
-  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-  </div>
-                           
-</div>
+                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        </div>
+                                                
+                        </div>
                          <h5>Firma de la Escritura</h5>
                     </div>
                 </div>
+
+                 <!--Bloque de Inscripción CBR-->
+               <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="dashboard-div-wrapper bk-clr-six" id="bk-clr-six">
+                        <i  class="fa fa-bell-o dashboard-div-icon" ></i>
+                        <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        </div>
+                                                
+                        </div>
+                         <h5>Conservador Bienes Raíces</h5>
+                    </div>  
+                </div>
+
+                     <!--Bloque de Pago/desembolso del Crédito-->
+               <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="dashboard-div-wrapper bk-clr-six" id="bk-clr-seven">
+                        <i  class="fa fa-bell-o dashboard-div-icon" ></i>
+                        <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        </div>
+                                                
+                        </div>
+                         <h5>Pago/Desembolso del Crédito</h5>
+                    </div>
+                </div>
+
+
+
+                       <!--Bloque de Pago/desembolso del Crédito-->
+               <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="dashboard-div-wrapper bk-clr-eight" id="bk-clr-eight">
+                        <i  class="fa fa-bell-o dashboard-div-icon" ></i>
+                        <div class="progress progress-striped active">
+                        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        </div>
+                                                
+                        </div>
+                         <h5>Escritura y Gastos Operaciones</h5>
+                    </div>
+                </div>
+
+
 
  </div>
            
             <div class="row">
                 <div class="col-md-6">
-                      <div class="notice-board">
+                    <!--  <div class="notice-board">
                         <div class="panel panel-default">
-                            <div class="panel-heading">
+                            
+                          <div class="panel-heading">
                            Active  Notice Panel 
                                 <div class="pull-right" >
                                     <div class="dropdown">
-  <button class="btn btn-success dropdown-toggle btn-xs" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-    <span class="glyphicon glyphicon-cog"></span>
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Refresh</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li>
-  </ul>
-</div>
+                                    <button class="btn btn-success dropdown-toggle btn-xs" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                        <span class="glyphicon glyphicon-cog"></span>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Refresh</a></li>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Logout</a></li>
+                                    </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="panel-body">
+                            
+                           <div class="panel-body">
                                
                                 <ul >
                                    
@@ -254,10 +342,10 @@
                             <div class="panel-footer">
                                 <a href="#" class="btn btn-default btn-block"> <i class="glyphicon glyphicon-repeat"></i> Just A Small Footer Button</a>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
-                    <hr />
-                    <div class="text-center alert alert-warning">
+                    
+                   <!-- <div class="text-center alert alert-warning">
                         <a href="#" class="btn btn-social btn-facebook">
                             <i class="fa fa-facebook"></i>&nbsp; Facebook</a>
                         <a href="#" class="btn btn-social btn-google">
@@ -266,7 +354,14 @@
                             <i class="fa fa-twitter"></i>&nbsp; Twitter </a>
                         <a href="#" class="btn btn-social btn-linkedin">
                             <i class="fa fa-linkedin"></i>&nbsp; Linkedin </a>
-                    </div>
+                    </div>-->
+                    <div class="row">
+                            <div class="col-md-12">
+                                <h4 class="page-head-line">Solicitudes Hipotecarias</h4>
+            
+                            </div>
+            
+                        </div>
                      
                     <hr />
                      <div class="table-responsive">
@@ -274,64 +369,64 @@
                                     <thead>
                                         <tr>
                                             <th>Ref. No.</th>
-                                            <th>Date</th>
-                                            <th>Amount</th>
-                                            <th>Status</th>
-                                            <th>Delivery On </th>
-                                            <th># #</th>
+                                            <th>Fecha Solicitud</th>
+                                            <th>Monto</th>
+                                            <th>Etapa</th>
+                                            <th>Ejecutivo en Gestión</th>
+                                            <th>Avance</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                        
                                         <tr>
-                                            <td># 2501</td>
-                                            <td>01/22/2015 </td>
+                                            <td># 1</td>
+                                            <td>22/01/2018 </td>
                                             <td>
-                                                <label class="label label-info">300 USD </label>
+                                                <label class="label label-info">1000 UF</label>
                                             </td>
                                             <td>
-                                                <label class="label label-success">Delivered</label></td>
-                                            <td>01/25/2015</td>
-                                             <td> <a href="#"  class="btn btn-xs btn-danger"  >View</a> </td>
+                                                <label class="label label-success">Tasación</label></td>
+                                            <td>Juan Peréz</td>
+                                             <td> <div class="btn btn-xs btn-success" onclick="cambia1()">100%</div> </td>
                                         </tr>
                                         <tr>
-                                            <td># 15091</td>
-                                            <td>12/12/2014 </td>
+                                            <td># 2</td>
+                                            <td>24/01/2018 </td>
                                             <td>
-                                                <label class="label label-danger">7000 USD </label>
+                                                <label class="label label-danger">2000 UF</label>
                                             </td>
                                             <td>
-                                                <label class="label label-warning">Shipped</label></td>
-                                            <td>N/A</td>
-                                             <td> <a href="#"  class="btn btn-xs btn-success"  >View</a> </td>
+                                                <label class="label label-warning">Solicitud y Aprobación</label></td>
+                                            <td>Pepito Rojas</td>
+                                             <td> <a href="#"  class="btn btn-xs btn-success" onclick="cambia()"  >90%</a> </td>
                                         </tr>
                                         <tr>
-                                            <td># 11291</td>
+                                            <td># 3</td>
                                             <td>12/03/2014 </td>
                                             <td>
-                                                <label class="label label-warning">7000 USD </label>
+                                                <label class="label label-warning">7000 UF</label>
                                             </td>
                                             <td>
-                                                <label class="label label-success">Delivered</label></td>
-                                            <td>01/23/2015</td>
-                                             <td> <a href="#"  class="btn btn-xs btn-primary"  >View</a> </td>
+                                                <label class="label label-success">Estudio títulos</label></td>
+                                            <td>El loco Bielsa</td>
+                                             <td> <a href="#"  class="btn btn-xs btn-success" onclick="cambia2()" >50%</a> </td>
                                         </tr>
                                         <tr>
-                                            <td># 1808</td>
+                                            <td># 4</td>
                                             <td>11/10/2014 </td>
                                             <td>
-                                                <label class="label label-success">2000 USD </label>
+                                                <label class="label label-success">2000 UF</label>
                                             </td>
                                             <td>
-                                                <label class="label label-info">Returned</label></td>
-                                            <td>N/A</td>
-                                             <td> <a href="#"  class="btn btn-xs btn-danger"  >View</a> </td>
+                                                <label class="label label-warning">Firma Escritura</label></td>
+                                            <td>Condorito</td>
+                                             <td> <a href="#"  class="btn btn-xs btn-success"  >0%</a> </td>
                                         </tr>
                                     </tbody>
                                 </table>
                             </div>
                 </div>
-                <div class="col-md-6">
+              <!-- <div class="col-md-6">
                     <div class="alert alert-danger">
                         This is a simple admin template that can be used for your small project or may be large projects. This is free for personal and commercial use.
                     </div>
@@ -358,8 +453,10 @@
                     </div>
                 </div>
                      </div>
-                </div>
+                </div>-->
             </div>
+
+
         </div>
     </div>
     <!-- CONTENT-WRAPPER SECTION END-->
@@ -367,7 +464,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    &copy; 2015 YourCompany | By : <a href="http://www.designbootstrap.com/" target="_blank">DesignBootstrap</a>
+                    &copy; 2018 Banco Estado BlackBlock 
                 </div>
 
             </div>
@@ -379,5 +476,8 @@
     <script src="assets/js/jquery-1.11.1.js"></script>
     <!-- BOOTSTRAP SCRIPTS  -->
     <script src="assets/js/bootstrap.js"></script>
+
+    <!-- Include controller -->
+<script src="assets/angular/angular-script.js"></script>
 </body>
 </html>
